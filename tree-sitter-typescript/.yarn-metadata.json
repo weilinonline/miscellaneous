@@ -1,0 +1,118 @@
+{
+  "manifest": {
+    "name": "tree-sitter-typescript",
+    "version": "0.20.1",
+    "description": "Typescript grammar for tree-sitter",
+    "keywords": [
+      "parser",
+      "tree-sitter",
+      "typescript"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/tree-sitter/tree-sitter-typescript.git"
+    },
+    "author": {
+      "name": "Max Brunsfeld"
+    },
+    "license": "MIT",
+    "dependencies": {
+      "nan": "^2.14.0"
+    },
+    "main": "./bindings/node",
+    "devDependencies": {
+      "tree-sitter-cli": "^0.20.0",
+      "tree-sitter-javascript": "github:tree-sitter/tree-sitter-javascript#fdeb68a"
+    },
+    "scripts": {
+      "build": "npm run build-typescript && npm run build-tsx",
+      "build-typescript": "cd typescript && npx tree-sitter generate --no-bindings",
+      "build-tsx": "cd tsx && npx tree-sitter generate --no-bindings",
+      "test-load": "node -e \"console.log(require('./typescript').name, require('./tsx').name)\"",
+      "test": "npm run test-typescript && npm run test-tsx && npm run test-load && script/parse-examples",
+      "test-typescript": "cd typescript && npx tree-sitter test",
+      "test-tsx": "cd tsx && npx tree-sitter test",
+      "test-windows": "pushd typescript && npx tree-sitter test && popd && pushd tsx && npx tree-sitter test",
+      "install": "node-gyp rebuild"
+    },
+    "tree-sitter": [
+      {
+        "scope": "source.ts",
+        "file-types": [
+          "ts"
+        ],
+        "path": "typescript",
+        "highlights": [
+          "queries/highlights.scm",
+          "node_modules/tree-sitter-javascript/queries/highlights.scm"
+        ],
+        "locals": [
+          "queries/locals.scm",
+          "node_modules/tree-sitter-javascript/queries/locals.scm"
+        ],
+        "tags": [
+          "queries/tags.scm",
+          "node_modules/tree-sitter-javascript/queries/tags.scm"
+        ],
+        "injections": "node_modules/tree-sitter-javascript/queries/injections.scm",
+        "injection-regex": "^(ts|typescript)$"
+      },
+      {
+        "scope": "source.tsx",
+        "file-types": [
+          "tsx"
+        ],
+        "path": "tsx",
+        "highlights": [
+          "queries/highlights.scm",
+          "node_modules/tree-sitter-javascript/queries/highlights-jsx.scm",
+          "node_modules/tree-sitter-javascript/queries/highlights.scm"
+        ],
+        "locals": "node_modules/tree-sitter-javascript/queries/locals.scm",
+        "tags": [
+          "queries/tags.scm",
+          "node_modules/tree-sitter-javascript/queries/tags.scm"
+        ],
+        "injections": "node_modules/tree-sitter-javascript/queries/injections.scm",
+        "injection-regex": "^(ts|typescript)$"
+      },
+      {
+        "scope": "source.js.flow",
+        "file-types": [
+          "js"
+        ],
+        "path": "tsx",
+        "highlights": [
+          "queries/highlights.scm",
+          "node_modules/tree-sitter-javascript/queries/highlights-jsx.scm",
+          "node_modules/tree-sitter-javascript/queries/highlights.scm"
+        ],
+        "locals": "node_modules/tree-sitter-javascript/queries/locals.scm",
+        "tags": [
+          "queries/tags.scm",
+          "node_modules/tree-sitter-javascript/queries/tags.scm"
+        ],
+        "injections": "node_modules/tree-sitter-javascript/queries/injections.scm",
+        "content-regex": "@flow"
+      }
+    ],
+    "_registry": "npm",
+    "_loc": "/Users/weilin/Library/Caches/Yarn/v6/npm-tree-sitter-typescript-0.20.1-6b338a1414f5ed13cc39e60275ddeaa0f25870a9-integrity/node_modules/tree-sitter-typescript/package.json",
+    "readmeFilename": "README.md",
+    "readme": "tree-sitter-typescript\n===========================\n\n[![Build Status](https://github.com/tree-sitter/tree-sitter-typescript/workflows/build/badge.svg)](https://github.com/tree-sitter/tree-sitter-typescript/actions?query=workflow%3Abuild)\n[![Build status](https://ci.appveyor.com/api/projects/status/rn11gs5y3tm7tuy0/branch/master?svg=true)](https://ci.appveyor.com/project/maxbrunsfeld/tree-sitter-typescript/branch/master)\n\nTypeScript and TSX grammars for [tree-sitter][].\n\nBecause TSX and TypeScript are actually two different dialects, this module defines two grammars. Require them as follows:\n\n```js\nrequire('tree-sitter-typescript').typescript; // TypeScript grammar\nrequire('tree-sitter-typescript').tsx; // TSX grammar\n```\n\n[tree-sitter]: https://github.com/tree-sitter/tree-sitter\n\nReferences\n\n* [TypeScript Language Spec](https://github.com/microsoft/TypeScript/blob/main/doc/spec-ARCHIVED.md)\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2017 GitHub\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/tree-sitter-typescript/-/tree-sitter-typescript-0.20.1.tgz#6b338a1414f5ed13cc39e60275ddeaa0f25870a9",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/tree-sitter-typescript/-/tree-sitter-typescript-0.20.1.tgz",
+    "hash": "6b338a1414f5ed13cc39e60275ddeaa0f25870a9",
+    "integrity": "sha512-wqpnhdVYX26ATNXeZtprib4+mF2GlYQB1cjRPibYGxDRiugx5OfjWwLE4qPPxEGdp2ZLSmZVesGUjLWzfKo6rA==",
+    "registry": "npm",
+    "packageName": "tree-sitter-typescript",
+    "cacheIntegrity": "sha512-wqpnhdVYX26ATNXeZtprib4+mF2GlYQB1cjRPibYGxDRiugx5OfjWwLE4qPPxEGdp2ZLSmZVesGUjLWzfKo6rA== sha1-azOKFBT17RPMOeYCdd3qoPJYcKk="
+  },
+  "registry": "npm",
+  "hash": "6b338a1414f5ed13cc39e60275ddeaa0f25870a9"
+}
